@@ -10,9 +10,16 @@ import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-export default class RoomCreatePage extends Component {
+const withNavigation = (Component) => {
+  return (props) => {
+    const navigate = useNavigate();
+    return <Component {...props} navigate={navigate} />;
+  };
+};
+
+class RoomCreatePage extends Component {
   defaultVotes = 2;
 
   constructor(props) {
@@ -51,7 +58,9 @@ export default class RoomCreatePage extends Component {
     };
     fetch("/api/create-room", requestOptions)
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        this.props.navigate("/room/" + data.code);
+      });
   }
 
   render() {
@@ -123,3 +132,5 @@ export default class RoomCreatePage extends Component {
     );
   }
 }
+
+export default withNavigation(RoomCreatePage);
