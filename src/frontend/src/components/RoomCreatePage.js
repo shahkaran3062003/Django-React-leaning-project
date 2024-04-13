@@ -1,15 +1,18 @@
 import React, { Component } from "react";
 
 // Material Ui imports
-import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import FormControl from "@material-ui/core/FormControl";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import TextField from "@material-ui/core/TextField";
-import Typography from "@material-ui/core/Typography";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
+import {
+  Button,
+  Grid,
+  FormHelperText,
+  FormControlLabel,
+  FormControl,
+  TextField,
+  Typography,
+  Radio,
+  RadioGroup,
+} from "@material-ui/core";
+
 import { Link, useNavigate } from "react-router-dom";
 
 const withNavigation = (Component) => {

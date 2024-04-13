@@ -30,6 +30,19 @@ class GetRoom(APIView):
         return Response({"Bad Request": "No room code given."}, status=status.HTTP_400_BAD_REQUEST)
 
 
+class JoinRoomView(APIView):
+    serializer_class = RoomSerializer
+    lookup_url_kwarg = "code"
+
+    def get(self, request, format=None):
+        code = request.GET.get(self.lookup_url_kwarg)
+
+        if code != None:
+            room = Room.objects.filter(code=code)
+
+            if (len(room) > 0):
+
+
 class CreateRoomView(APIView):
     serializer_class = CreateRoomSerializer
 
